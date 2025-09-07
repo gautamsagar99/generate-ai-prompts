@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, Crown, Github } from "lucide-react";
+import { Crown } from "lucide-react";
 
 export const Header = () => {
   return (
@@ -9,7 +9,12 @@ export const Header = () => {
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <div className="p-2 rounded-lg bg-gradient-primary">
-              <Sparkles className="h-5 w-5 text-white" />
+              <img
+                src="/magic-wand-sparkle-32.svg"
+                alt="PromptCraft Magic Wand Icon"
+                className="h-5 w-5"
+                style={{ display: 'block' }}
+              />
             </div>
             <div>
               <h1 className="text-xl font-bold text-foreground">PromptCraft</h1>
