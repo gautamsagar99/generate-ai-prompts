@@ -1,51 +1,59 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Textarea } from '@/components/ui/textarea';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 // Replacing Radix Select with native select for Chrome extension compatibility
-import { useToast } from '@/hooks/use-toast';
-import { Copy, Sparkles, Wand2 } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
+import { Copy, Sparkles, Wand2 } from "lucide-react";
 
 const LLM_MODELS = [
-  { id: 'gpt-4', name: 'ChatGPT (GPT-4)', company: 'OpenAI' },
-  { id: 'claude', name: 'Claude', company: 'Anthropic' },
-  { id: 'gemini', name: 'Gemini Pro', company: 'Google' },
-  { id: 'llama', name: 'Llama 3', company: 'Meta' },
-  { id: 'perplexity', name: 'Perplexity', company: 'Perplexity AI' },
+  { id: "gpt-4", name: "ChatGPT (GPT-4)", company: "OpenAI" },
+  { id: "claude", name: "Claude", company: "Anthropic" },
+  { id: "gemini", name: "Gemini Pro", company: "Google" },
+  { id: "llama", name: "Llama 3", company: "Meta" },
+  { id: "perplexity", name: "Perplexity", company: "Perplexity AI" },
 ];
 
 const PROMPT_TEMPLATES = {
-  'gpt-4': {
-    prefix: "You are an expert assistant. I need you to help me with the following task.",
-    structure: "Please provide a comprehensive and well-structured response that includes:\n1. A clear explanation\n2. Step-by-step guidance if applicable\n3. Practical examples\n4. Any important considerations or limitations\n\nTask: ",
-    suffix: "\n\nPlease be thorough yet concise in your response."
+  "gpt-4": {
+    prefix:
+      "You are an expert assistant. I need you to help me with the following task.",
+    structure:
+      "Please provide a comprehensive and well-structured response that includes:\n1. A clear explanation\n2. Step-by-step guidance if applicable\n3. Practical examples\n4. Any important considerations or limitations\n\nTask: ",
+    suffix: "\n\nPlease be thorough yet concise in your response.",
   },
-  'claude': {
+  claude: {
     prefix: "I'd like your help with something important.",
-    structure: "Please approach this systematically and provide:\n- Clear reasoning behind your approach\n- Detailed explanations\n- Practical examples where relevant\n- Any caveats or considerations\n\nHere's what I need help with: ",
-    suffix: "\n\nThank you for taking the time to provide a thoughtful response."
+    structure:
+      "Please approach this systematically and provide:\n- Clear reasoning behind your approach\n- Detailed explanations\n- Practical examples where relevant\n- Any caveats or considerations\n\nHere's what I need help with: ",
+    suffix:
+      "\n\nThank you for taking the time to provide a thoughtful response.",
   },
-  'gemini': {
+  gemini: {
     prefix: "Hello! I need assistance with a specific task.",
-    structure: "Could you please help me by:\n• Breaking down the problem clearly\n• Providing step-by-step guidance\n• Including relevant examples\n• Highlighting key points to remember\n\nThe task is: ",
-    suffix: "\n\nI appreciate your detailed and helpful response!"
+    structure:
+      "Could you please help me by:\n• Breaking down the problem clearly\n• Providing step-by-step guidance\n• Including relevant examples\n• Highlighting key points to remember\n\nThe task is: ",
+    suffix: "\n\nI appreciate your detailed and helpful response!",
   },
-  'llama': {
+  llama: {
     prefix: "I'm looking for help with a particular challenge.",
-    structure: "Please provide a detailed response that covers:\n1. Core concepts and explanations\n2. Actionable steps or methods\n3. Real-world examples or applications\n4. Important tips or warnings\n\nMy request: ",
-    suffix: "\n\nPlease ensure your response is both comprehensive and practical."
+    structure:
+      "Please provide a detailed response that covers:\n1. Core concepts and explanations\n2. Actionable steps or methods\n3. Real-world examples or applications\n4. Important tips or warnings\n\nMy request: ",
+    suffix:
+      "\n\nPlease ensure your response is both comprehensive and practical.",
   },
-  'perplexity': {
+  perplexity: {
     prefix: "I need research and analysis on the following topic.",
-    structure: "Please provide:\n- Current and accurate information\n- Multiple perspectives where relevant\n- Sources and references\n- Analysis and insights\n\nTopic/Question: ",
-    suffix: "\n\nPlease include recent developments and cite reliable sources."
-  }
+    structure:
+      "Please provide:\n- Current and accurate information\n- Multiple perspectives where relevant\n- Sources and references\n- Analysis and insights\n\nTopic/Question: ",
+    suffix: "\n\nPlease include recent developments and cite reliable sources.",
+  },
 };
 
 export const PromptOptimizer = () => {
-  const [userInput, setUserInput] = useState('');
-  const [selectedModel, setSelectedModel] = useState('');
-  const [optimizedPrompt, setOptimizedPrompt] = useState('');
+  const [userInput, setUserInput] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
+  const [optimizedPrompt, setOptimizedPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
@@ -60,14 +68,15 @@ export const PromptOptimizer = () => {
     }
 
     setIsGenerating(true);
-    
+
     // Simulate generation delay for better UX
     setTimeout(() => {
-      const template = PROMPT_TEMPLATES[selectedModel as keyof typeof PROMPT_TEMPLATES];
+      const template =
+        PROMPT_TEMPLATES[selectedModel as keyof typeof PROMPT_TEMPLATES];
       const optimized = `${template.prefix}\n\n${template.structure}${userInput}\n${template.suffix}`;
       setOptimizedPrompt(optimized);
       setIsGenerating(false);
-      
+
       toast({
         title: "Prompt Optimized!",
         description: "Your prompt has been optimized for the selected model.",
@@ -77,7 +86,7 @@ export const PromptOptimizer = () => {
 
   const copyToClipboard = async () => {
     if (!optimizedPrompt) return;
-    
+
     try {
       await navigator.clipboard.writeText(optimizedPrompt);
       toast({
@@ -124,29 +133,41 @@ export const PromptOptimizer = () => {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-foreground block mb-2" htmlFor="model-select">
+            <label
+              className="text-sm font-medium text-foreground block mb-2"
+              htmlFor="model-select"
+            >
               Target AI Model
             </label>
             <select
               id="model-select"
               value={selectedModel}
-              onChange={e => setSelectedModel(e.target.value)}
+              onChange={(e) => setSelectedModel(e.target.value)}
               className="w-full h-10 rounded-md border border-border/30 bg-background/50 px-3 py-2 text-sm focus:border-primary/50 focus:outline-none text-foreground transition-smooth shadow-glow"
               style={{
-                background: 'hsl(var(--background) / 0.95)',
-                color: 'hsl(var(--foreground))',
-                borderColor: 'hsl(var(--border))',
-                boxShadow: '0 0 8px hsl(var(--primary) / 0.15)'
+                background: "hsl(var(--background) / 0.95)",
+                color: "hsl(var(--foreground))",
+                borderColor: "hsl(var(--border))",
+                boxShadow: "0 0 8px hsl(var(--primary) / 0.15)",
               }}
             >
-              <option value="" disabled style={{background: 'hsl(var(--background) / 0.95)', color: 'hsl(var(--muted-foreground))'}}>Choose your AI model...</option>
+              <option
+                value=""
+                disabled
+                style={{
+                  background: "hsl(var(--background) / 0.95)",
+                  color: "hsl(var(--muted-foreground))",
+                }}
+              >
+                Choose your AI model...
+              </option>
               {LLM_MODELS.map((model) => (
                 <option
                   key={model.id}
                   value={model.id}
                   style={{
-                    background: 'hsl(var(--background) / 0.98)',
-                    color: 'hsl(var(--foreground))',
+                    background: "hsl(var(--background) / 0.98)",
+                    color: "hsl(var(--foreground))",
                   }}
                 >
                   {model.name} ({model.company})
@@ -155,7 +176,7 @@ export const PromptOptimizer = () => {
             </select>
           </div>
 
-          <Button 
+          <Button
             onClick={generateOptimizedPrompt}
             disabled={isGenerating || !userInput.trim() || !selectedModel}
             className="w-full bg-gradient-primary hover:opacity-90 shadow-glow transition-smooth"
@@ -180,8 +201,10 @@ export const PromptOptimizer = () => {
         <Card className="p-6 bg-gradient-secondary border-border/50 shadow-soft">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-foreground">Optimized Prompt</h3>
-              <Button 
+              <h3 className="text-lg font-semibold text-foreground">
+                Optimized Prompt
+              </h3>
+              <Button
                 onClick={copyToClipboard}
                 variant="secondary"
                 size="sm"
@@ -197,7 +220,8 @@ export const PromptOptimizer = () => {
               </pre>
             </div>
             <div className="text-xs text-muted-foreground">
-              ✨ This prompt has been optimized for {LLM_MODELS.find(m => m.id === selectedModel)?.name}
+              ✨ This prompt has been optimized for{" "}
+              {LLM_MODELS.find((m) => m.id === selectedModel)?.name}
             </div>
           </div>
         </Card>

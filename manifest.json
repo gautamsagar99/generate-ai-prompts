@@ -1,16 +1,24 @@
 {
   "manifest_version": 3,
-  "name": "Whisper Prompts",
+  "name": "Generate AI Prompts",
   "version": "1.0.0",
-  "description": "A Vite React app as a Chrome extension.",
+  "description": "Generate AI Prompts helps you craft, optimize, and manage AI prompts directly from your browser. Designed for productivity, privacy, and ease of use.",
   "action": {
     "default_popup": "index.html",
-    "default_title": "Whisper Prompts"
+    "default_title": "Generate AI  Prompts"
   },
   "icons": {
     "16": "favicon.ico",
     "48": "favicon.ico",
     "128": "favicon.ico"
   },
-  "permissions": []
+  "permissions": [],
+  "host_permissions": [],
+  "keywords": [
+    "AI prompts",
+    "prompt engineering",
+    "productivity",
+    "chatgpt",
+    "chrome extension"
+  ]
 }

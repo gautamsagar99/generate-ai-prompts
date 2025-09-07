@@ -1,4 +1,4 @@
-import { Heart, Code, Zap } from 'lucide-react';
+import { Heart, Code, Zap } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -7,9 +7,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-foreground">PromptCraft</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              PromptCraft
+            </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Optimize your AI interactions with perfectly crafted prompts for every major language model.
+              Optimize your AI interactions with perfectly crafted prompts for
+              every major language model.
             </p>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">
@@ -50,7 +53,8 @@ export const Footer = () => {
 
         <div className="mt-8 pt-6 border-t border-border/20 text-center">
           <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
-            Made with <Heart className="h-4 w-4 text-red-500" /> for the AI community
+            Made with <Heart className="h-4 w-4 text-red-500" /> for the AI
+            community
           </p>
         </div>
       </div>

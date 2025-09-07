@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Sparkles, Crown, Github } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Sparkles, Crown, Github } from "lucide-react";
 
 export const Header = () => {
   return (
@@ -13,7 +13,9 @@ export const Header = () => {
             </div>
             <div>
               <h1 className="text-xl font-bold text-foreground">PromptCraft</h1>
-              <p className="text-xs text-muted-foreground">AI Prompt Optimizer</p>
+              <p className="text-xs text-muted-foreground">
+                AI Prompt Optimizer
+              </p>
             </div>
           </div>
           <Badge variant="secondary" className="text-xs px-2 py-1">
@@ -22,16 +24,16 @@ export const Header = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             size="sm"
             className="text-muted-foreground hover:text-foreground transition-smooth"
           >
             <Github className="h-4 w-4 mr-2" />
             GitHub
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="sm"
             className="border-primary/30 text-primary hover:bg-primary/10 transition-smooth"
           >
