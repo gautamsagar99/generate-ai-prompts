@@ -25,20 +25,13 @@ export const Header = () => {
 
         <div className="flex items-center gap-2">
           <Button
-            variant="ghost"
-            size="sm"
-            className="text-muted-foreground hover:text-foreground transition-smooth"
-          >
-            <Github className="h-4 w-4 mr-2" />
-            GitHub
-          </Button>
-          <Button
             variant="outline"
             size="sm"
-            className="border-primary/30 text-primary hover:bg-primary/10 transition-smooth"
+            className="border-primary/30 text-primary hover:bg-primary/10 transition-smooth cursor-not-allowed opacity-70"
+            disabled
           >
             <Crown className="h-4 w-4 mr-2" />
-            Upgrade to Pro
+            Pro (Coming Soon)
           </Button>
         </div>
       </div>
