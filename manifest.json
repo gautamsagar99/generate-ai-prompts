@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Generate AI Prompts",
   "version": "1.0.0",
-  "description": "Generate AI Prompts helps you craft, optimize, and manage AI prompts directly from your browser. Designed for productivity, privacy, and ease of use.",
+  "description": "Generate AI Prompts helps you craft, optimize, and manage AI prompts directly from your browser.",
   "action": {
     "default_popup": "index.html",
     "default_title": "Generate AI  Prompts"
